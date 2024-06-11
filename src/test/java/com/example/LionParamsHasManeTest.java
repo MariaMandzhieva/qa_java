@@ -12,9 +12,6 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class LionParamsHasManeTest {
 
-    @Mock
-    private Feline feline;
-
     @Parameterized.Parameter
     public String sex;
     @Parameterized.Parameter(1)
@@ -26,11 +23,6 @@ public class LionParamsHasManeTest {
                 {"Самец", true},
                 {"Самка", false}
         };
-    }
-
-    @Before
-    public void setUp() {
-        MockitoAnnotations.openMocks(this);
     }
 
     @Test

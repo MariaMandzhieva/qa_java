@@ -10,8 +10,6 @@ import static org.junit.Assert.assertFalse;
 public class LionExceptionTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
-    @Mock
-    private Feline feline;
 
     @Test
     public void doesHaveManeTest() throws Exception {
