@@ -16,15 +16,15 @@ public class LionParamsKittensTest {
     private Feline feline;
 
     @Parameterized.Parameter
-    public int kittensCount;
+    public String sex;
     @Parameterized.Parameter(1)
-    public int expectedKittensCount;
+    public int kittensCount;
 
     @Parameterized.Parameters
     public static Object[][] data() {
         return new Object[][] {
-                { 3, 3 },
-                { 4, 4 }
+                { "Самец", 0 },
+                { "Самка", 4 }
         };
     }
 
@@ -34,11 +34,12 @@ public class LionParamsKittensTest {
     }
 
     @Test
-    public void getKittensLionTest(){
-        Lion lion = new Lion(feline);
+    public void getKittensLionTest() throws Exception{
+        Lion lion = new Lion(feline, sex);
 
         Mockito.when(feline.getKittens()).thenReturn(kittensCount);
         int actual = lion.getKittens();
+        int expectedKittensCount = kittensCount;
 
         assertEquals(expectedKittensCount, actual);
     }

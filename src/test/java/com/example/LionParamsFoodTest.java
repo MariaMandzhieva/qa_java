@@ -1,46 +1,43 @@
 package com.example;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.MockitoAnnotations;
 
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
-@RunWith(MockitoJUnitRunner.class)
-public class LionTest {
+@RunWith(Parameterized.class)
+public class LionParamsFoodTest {
 
     @Mock
     private Feline feline;
 
-    @Test
-    public void getKittensLionTest() {
-        Lion lion = new Lion(feline);
+    @Parameterized.Parameter
+    public String sex;
 
-        Mockito.when(feline.getKittens()).thenReturn(1);
-        int actual = lion.getKittens();
-        int expected = 1;
-
-        assertEquals(expected, actual);
+    @Parameterized.Parameters
+    public static Object[][] data() {
+        return new Object[][] {
+                { "Самец" },
+                { "Самка" }
+        };
     }
 
-    @Test
-    public void doesHaveManeTest() throws Exception {
-
-        String actualSex = "Самка";
-        Lion lioness = new Lion(actualSex);
-
-        assertFalse(lioness.doesHaveMane());
-
+    @Before
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test
     public void getFoodLionTest() throws Exception {
-        Lion lion = new Lion(feline);
+        Lion lion = new Lion(feline, sex);
 
         List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
         Mockito.when(feline.getFood("Хищник")).thenReturn(expectedFood);

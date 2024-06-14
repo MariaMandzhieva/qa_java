@@ -4,8 +4,13 @@ import java.util.List;
 
 public class AlexLion extends Lion{
 
-    public AlexLion(Feline feline) {
-        super(feline);
+    public AlexLion(Feline feline, String sex) throws Exception {
+        super(feline, sex);
+
+        if ("Самец".equals(sex)) {
+                hasMane = true;
+        } else { throw new Exception("Используйте допустимые значения пола животного - самец");
+            }
     }
 
     @Override

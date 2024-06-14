@@ -3,11 +3,13 @@ package com.example;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.mockito.Mock;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class LionParamsHasManeTest {
+    Feline feline;
 
     @Parameterized.Parameter
     public String sex;
@@ -24,11 +26,11 @@ public class LionParamsHasManeTest {
 
     @Test
     public void doesHaveManeTest() throws Exception {
-        Lion lion = new Lion(sex);
+        Lion lion = new Lion(feline, sex);
 
-        boolean actualSex = lion.doesHaveMane();
+        boolean actual = lion.doesHaveMane();
 
-        assertEquals(hasMane, actualSex);
+        assertEquals(hasMane, actual);
 
     }
 }

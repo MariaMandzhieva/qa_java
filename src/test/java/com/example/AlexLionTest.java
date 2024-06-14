@@ -15,8 +15,8 @@ public class AlexLionTest {
     private Feline feline;
 
     @Test
-    public void getKittensAlexLionTest(){
-        AlexLion alexLion = new AlexLion(feline);
+    public void getKittensAlexLionTest() throws Exception {
+        AlexLion alexLion = new AlexLion(feline, "Самец");
         int actual = alexLion.getKittens();
         int expected = 0;
 
@@ -24,8 +24,8 @@ public class AlexLionTest {
     }
 
     @Test
-    public void getFriendsAlexLionTest(){
-        AlexLion alexLion = new AlexLion(feline);
+    public void getFriendsAlexLionTest() throws Exception {
+        AlexLion alexLion = new AlexLion(feline, "Самец");
         List<String> actual = alexLion.getFriends();
         List<String> expected = List.of("Марти", "Глория", "Мелман");
 
@@ -33,8 +33,8 @@ public class AlexLionTest {
     }
 
     @Test
-    public void getPlaceOfLivingAlexLionTest(){
-        AlexLion alexLion = new AlexLion(feline);
+    public void getPlaceOfLivingAlexLionTest() throws Exception {
+        AlexLion alexLion = new AlexLion(feline, "Самец");
         String actual = alexLion.getPlaceOfLiving();
         String expected = "Нью-Йоркский зоопарк";
 
